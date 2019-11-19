@@ -10,8 +10,9 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
 
+var path = require('path');
 app.get('/**', (req, res) => {
-    res.sendFile(__dirname + '/../dist/gamer-lobby/index.html');
+    res.sendFile(path.resolve(__dirname + '/../dist/gamer-lobby/index.html'));
 })
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
