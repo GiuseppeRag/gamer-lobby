@@ -5,6 +5,12 @@ var ObjectID = mongodb.ObjectID;
 
 var CONTACTS_COLLECTION = "contacts";
 
+app.use(express.static(__dirname + '/../dist/gamer-lobby'));
+
+app.get('/**', (req, res) => {
+    res.sendFile(__dirname + '/../dist/gamer-lobby/index.html');
+})
+
 var app = express();
 app.use(bodyParser.json());
 
