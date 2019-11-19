@@ -3,16 +3,16 @@ var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
 var ObjectID = mongodb.ObjectID;
 
-var CONTACTS_COLLECTION = "contacts";
+var PLAYER_COLLECTION = "players";
+
+var app = express();
+app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/../dist/gamer-lobby'));
 
 app.get('/**', (req, res) => {
     res.sendFile(__dirname + '/../dist/gamer-lobby/index.html');
 })
-
-var app = express();
-app.use(bodyParser.json());
 
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
 var db;
