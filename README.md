@@ -1,4 +1,4 @@
-# gamer_lobby
+# gamer-lobby
 
 Final Project For Comp3123 - Full Stack
 
