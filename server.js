@@ -1,6 +1,7 @@
 var express = require("express");
 var bodyParser = require("body-parser");
 var mongodb = require("mongodb");
+var path = require('path');
 var ObjectID = mongodb.ObjectID;
 
 var PLAYER_COLLECTION = "players";
@@ -10,7 +11,6 @@ app.use(bodyParser.json());
 
 app.use(express.static(__dirname + '/dist/gamer-lobby'));
 
-var path = require('path');
 app.get('/**', (req, res) => {
     res.sendFile(path.resolve(__dirname + '/dist/gamer-lobby/index.html'));
 })

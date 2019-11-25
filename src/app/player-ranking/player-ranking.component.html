@@ -1,0 +1,32 @@
+<div class="spacing">
+    <button>Login</button>
+</div>
+<div class="spacing">
+    <button>Players Rankings</button>
+    <button>Admin</button>
+</div>
+<div class="spacing">
+    <input placeholder="search Bar">
+</div>
+<table class="table">
+    <tr>
+        <th>Player</th>
+        <th>Rank</th>
+        <th>Score</th>
+        <th>Time Played</th>
+        <th>Game Played</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+    <tr *ngFor="let player of players">
+        <td class="tCell">{{player.name}}</td>
+        <td class="tCell">{{player.rank}}</td>
+        <td class="tCell">{{player.score}}</td>
+        <td class="tCell">{{player.playTime}}</td>
+        <td class="tCell">{{player.gamePlayed}}</td>
+        <td class="tCell">{{player.status}}</td>
+        <td class="tCell">
+            <button *ngIf="player.status == 'Availiable'" >Join Game</button>
+        </td>
+    </tr>
+</table>
