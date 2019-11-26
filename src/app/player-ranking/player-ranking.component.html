@@ -1,13 +1,3 @@
-<div class="spacing">
-    <button>Login</button>
-</div>
-<div class="spacing">
-    <button>Players Rankings</button>
-    <button>Admin</button>
-</div>
-<div class="spacing">
-    <input placeholder="search Bar">
-</div>
 <table class="table">
     <tr>
         <th>Player</th>
@@ -26,7 +16,11 @@
         <td class="tCell">{{player.gamePlayed}}</td>
         <td class="tCell">{{player.status}}</td>
         <td class="tCell">
-            <button *ngIf="player.status == 'Availiable'" >Join Game</button>
+            <button *ngIf="player.status == 'Availiable' && !isAdmin" routerLink='/players/{{player.id}}'>Join Game</button>
+            <button *ngIf="isAdmin">Update</button>
+        </td>
+        <td *ngIf="isAdmin" class="tCell">
+            <button>Delete</button>
         </td>
     </tr>
 </table>

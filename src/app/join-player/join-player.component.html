@@ -1,0 +1,19 @@
+<div>
+<form #f="ngForm">
+    <nav>Player: </nav>
+    <nav>Rank: </nav>
+    <nav>Score: </nav>
+    <nav>Time Played: </nav>
+    <nav>Favourite Game: </nav>
+    <nav>
+        Customer:
+        <select [(ngModel)]='selectedGame' name="gameSelect">
+            <option *ngFor='let game of games' [value]="game.id">{{game.title}}</option>
+        </select>
+    </nav>
+    <nav>
+    <button (click)='onJoin()'>Join</button>
+    <button (click)='onBack()'>Cancel</button>
+    </nav>
+</form>
+</div>

@@ -1,0 +1,13 @@
+<div class="spacing">
+        <button *ngIf='!isAdmin' routerLink='/adminLogin'>Login</button>
+    </div>
+    <div class="spacing">
+        <button (click)='changeTable("players")'>Players Rankings</button>
+        <button (click)='changeTable("games")'>Games</button>
+    </div>
+    <div class="spacing">
+        <input placeholder="search Bar">
+</div>
+<app-player-ranking *ngIf="table == 'players'"></app-player-ranking>
+<app-games *ngIf="table == 'games'"></app-games>
+

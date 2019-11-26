@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Player } from '../player';
+import { PlayerService } from '../player.service';
+import { AuthService } from '../auth.service';
 
 @Component({
   selector: 'app-player-ranking',
@@ -8,14 +10,18 @@ import { Player } from '../player';
 })
 export class PlayerRankingComponent implements OnInit {
 
-  players: Player[] = [
-    {id: 1, name: "DoeJohn82", rank: 1, score: 12345678, playTime: "1D 12H 32M", gamePlayed: "Minecraft", status: "Availiable"},
-    {id: 2, name: "MikalyX", rank: 2, score: 1233402, playTime: "1D 7H 3M", gamePlayed: "The Elder Scrolls V: Skyrim", status: "Unavailiable"}
-  ];
+  players: Player[];
+  isAdmin: boolean;
 
-  constructor() { }
+  constructor(private playerService: PlayerService, private authService: AuthService) { }
 
   ngOnInit() {
+    this.getPlayers();
+    this.isAdmin = this.authService.adminLogin;
+  }
+
+  getPlayers(): void{
+    this.players = this.playerService.getPlayers();
   }
 
 }

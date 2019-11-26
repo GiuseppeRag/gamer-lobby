@@ -1,0 +1,12 @@
+<form #f="ngForm">
+    <nav>
+        <label for="username">Username:</label>
+        <input name="username" id="username" type="text" [(ngModel)]='username'/>
+    </nav>
+    <nav>
+        <label for="password">Password:</label>
+        <input name="password" id="password" type="password" [(ngModel)]='password'/>
+    </nav>
+    <button (click)='Login()'>Login</button>
+    <button (click)='onBack()'>Back</button>
+</form>

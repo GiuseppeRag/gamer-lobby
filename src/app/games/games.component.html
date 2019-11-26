@@ -1,0 +1,20 @@
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Platform</th>
+        <th>Genre</th>
+        <th>Rating</th>
+        <th>Publisher</th>
+        <th>Release</th>
+        <th>Status</th>
+    </tr>
+    <tr *ngFor='let game of games'>
+        <td class="tCell">{{game.title}}</td>
+        <td class="tCell">{{game.platform}}</td>
+        <td class="tCell">{{game.genre}}</td>
+        <td class="tCell">{{game.rating}}</td>
+        <td class="tCell">{{game.publisher}}</td>
+        <td class="tCell">{{game.release}}</td>
+        <td class="tCell">{{game.status}}</td>
+    </tr>
+</table>
