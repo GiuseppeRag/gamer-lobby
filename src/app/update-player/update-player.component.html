@@ -1,0 +1,40 @@
+<div>
+    <form #f="ngForm">
+        <nav>               
+             Player: 
+            <input type="text" name="player" [(ngModel)]='player' />
+        </nav>
+        <nav>
+            Rank:
+            <select [(ngModel)]='rank' name='rank'>
+                <option *ngFor='let rank of ranks' [value]='rank'>{{rank}}</option>
+            </select> 
+        </nav>
+        <nav>
+            Score: 
+            <input type="text" name="score" [(ngModel)]='score' />
+        </nav>
+        <nav>
+            Time Played:
+            <input type="text" name="timePlayed" [(ngModel)]='timePlayed' />
+        </nav>
+        <nav>
+            Favourite Game:
+            <select [(ngModel)]='favouriteGame' name="favouriteGame">
+                <option *ngFor='let game of games' [value]="game.id">{{game.title}}</option>
+            </select>
+        </nav>
+        <nav>
+            Status:
+            <select [(ngModel)]='status' name="status">
+                <option value='Availiable'>Availiable</option>
+                <option value="Unavailiable">Unavailiable</option>
+            </select>
+        </nav>
+        <nav>
+            <button (click)='onUpdate()'>Update</button>
+            <button (click)='onBack()'>Cancel</button>
+        </nav>
+    </form>
+</div>
+    

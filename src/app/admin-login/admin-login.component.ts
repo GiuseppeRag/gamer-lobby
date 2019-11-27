@@ -26,7 +26,7 @@ export class AdminLoginComponent implements OnInit {
     console.log(this.password);
     if (this.username == "username" && this.password == "password"){
       this.authService.Login();
-      this.router.navigateByUrl('/players');
+      this.router.navigateByUrl('/home');
     }
   }
 

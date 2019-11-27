@@ -11,6 +11,9 @@ import { FormsModule } from '@angular/forms';
 import { AdminGuard } from './admin.guard';
 import { GamesComponent } from './games/games.component';
 import { ViewTablesComponent } from './view-tables/view-tables.component';
+import { UpdatePlayerComponent } from './update-player/update-player.component';
+import { AddPlayerComponent } from './add-player/add-player.component';
+import { combineLatest } from 'rxjs';
 
 @NgModule({
   declarations: [
@@ -19,7 +22,9 @@ import { ViewTablesComponent } from './view-tables/view-tables.component';
     JoinPlayerComponent,
     AdminLoginComponent,
     GamesComponent,
-    ViewTablesComponent
+    ViewTablesComponent,
+    UpdatePlayerComponent,
+    AddPlayerComponent
   ],
   imports: [
     BrowserModule,
@@ -27,8 +32,10 @@ import { ViewTablesComponent } from './view-tables/view-tables.component';
     FormsModule,
     RouterModule.forRoot([
       {path: 'home', component: ViewTablesComponent},
-      {path: 'players/:id', component: JoinPlayerComponent},
+      {path: 'joinplayer/:id', component: JoinPlayerComponent},
       {path: 'adminLogin', component: AdminLoginComponent},
+      {path: 'addplayer', canActivate: [AdminGuard], component: AddPlayerComponent},
+      {path: 'updateplayer/:id', canActivate: [AdminGuard], component: UpdatePlayerComponent},
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: '**', redirectTo: "home", pathMatch: "full"}
     ])

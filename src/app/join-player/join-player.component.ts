@@ -20,6 +20,7 @@ export class JoinPlayerComponent implements OnInit {
   player: Player;
   value: String;
   selectedGame: Game;
+  id: number;
 
   constructor(
     private route: ActivatedRoute, 
@@ -29,6 +30,7 @@ export class JoinPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
+    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   getGames(){
