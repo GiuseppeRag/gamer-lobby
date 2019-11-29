@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { Location } from '@angular/common';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-admin-login',
@@ -12,6 +13,7 @@ export class AdminLoginComponent implements OnInit {
 
   username: String;
   password: String;
+  errorMessage: String;
 
   constructor(
     private authService: AuthService, 
@@ -21,12 +23,18 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  Login(){
-    console.log(this.username);
-    console.log(this.password);
-    if (this.username == "username" && this.password == "password"){
-      this.authService.Login();
-      this.router.navigateByUrl('/home');
+  Login(f: NgForm){
+    if (f.valid){
+      if (this.username == "username" && this.password == "password") {
+        this.authService.Login();
+        this.router.navigateByUrl('/home');
+      }
+      else {
+        this.errorMessage = "Invalid Credentials Provided";
+      }
+    }
+    else {
+      this.errorMessage = "Form Invalid";
     }
   }
 

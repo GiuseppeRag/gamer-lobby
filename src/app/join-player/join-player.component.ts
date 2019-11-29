@@ -20,6 +20,7 @@ export class JoinPlayerComponent implements OnInit {
   player: Player;
   value: String;
   selectedGame: Game;
+  errorMessage: String;
   id: number;
 
   constructor(
@@ -44,6 +45,9 @@ export class JoinPlayerComponent implements OnInit {
   onJoin(){
     if (this.selectedGame != null){
       this.location.back();
+    }
+    else {;
+      this.errorMessage = 'A Game must be selected';
     }
   }
 }

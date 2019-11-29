@@ -9,6 +9,16 @@ export class AuthService {
 
   Login(){
     this.adminLogin = true;
+    sessionStorage.setItem('isLoggedIn', "" + this.adminLogin); 
+  }
+
+  Logout() {
+    this.adminLogin = false;
+    sessionStorage.removeItem('isLoggedIn');
+  }
+
+  isLoggedIn(): boolean {
+    return (sessionStorage.getItem('isLoggedIn') == "true");
   }
 
   constructor() { 

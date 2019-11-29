@@ -1,12 +1,15 @@
 <form #f="ngForm">
     <nav>
         <label for="username">Username:</label>
-        <input name="username" id="username" type="text" [(ngModel)]='username'/>
+        <input name="username" id="username" type="text" [(ngModel)]='username' required/>
     </nav>
     <nav>
         <label for="password">Password:</label>
-        <input name="password" id="password" type="password" [(ngModel)]='password'/>
+        <input name="password" id="password" type="password" [(ngModel)]='password' required/>
     </nav>
-    <button (click)='Login()'>Login</button>
+    <button (click)='Login(f)'>Login</button>
     <button (click)='onBack()'>Back</button>
 </form>
+<div class="error">
+    {{errorMessage}}
+</div>

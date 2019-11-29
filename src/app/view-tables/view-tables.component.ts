@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-tables',
@@ -11,10 +12,10 @@ export class ViewTablesComponent implements OnInit {
   isAdmin: boolean
   table: String;
 
-  constructor(private authService: AuthService) { }
+  constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
-    this.isAdmin = this.authService.adminLogin;
+    this.isAdmin = this.authService.isLoggedIn();
     this.table = 'players';
   }
 
@@ -23,5 +24,11 @@ export class ViewTablesComponent implements OnInit {
       this.table = 'games'
     else if (table == 'players')
       this.table = 'players'
+  }
+
+  logout(){
+    this.authService.Logout();
+    this.isAdmin = false;
+    this.table = 'players';
   }
 }

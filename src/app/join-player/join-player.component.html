@@ -10,6 +10,9 @@
         <select [(ngModel)]='selectedGame' name="gameSelect">
             <option *ngFor='let game of games' [value]="game.id">{{game.title}}</option>
         </select>
+        <nav class='error'> 
+            <p>{{errorMessage}}</p>
+        </nav>
     </nav>
     <nav>
     <button (click)='onJoin()'>Join</button>

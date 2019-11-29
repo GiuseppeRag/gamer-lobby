@@ -13,7 +13,6 @@ import { GamesComponent } from './games/games.component';
 import { ViewTablesComponent } from './view-tables/view-tables.component';
 import { UpdatePlayerComponent } from './update-player/update-player.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
-import { combineLatest } from 'rxjs';
 
 @NgModule({
   declarations: [

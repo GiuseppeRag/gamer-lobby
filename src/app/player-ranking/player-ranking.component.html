@@ -18,9 +18,8 @@
         <td class="tCell">
             <button *ngIf="player.status == 'Availiable' && !isAdmin" routerLink='/joinplayer/{{player.id}}'>Join Game</button>
             <button *ngIf="isAdmin" routerLink='/updateplayer/{{player.id}}'>Update</button>
-        </td>
-        <td *ngIf="isAdmin" class="tCell">
-            <button>Delete</button>
+            <br *ngIf="isAdmin">
+            <button *ngIf="isAdmin">Delete</button>
         </td>
     </tr>
 </table>
