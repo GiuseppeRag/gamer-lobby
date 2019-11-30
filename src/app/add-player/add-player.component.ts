@@ -12,7 +12,7 @@ import { Game } from '../game';
 export class AddPlayerComponent implements OnInit {
 
   player: String
-  rank: number
+  rank: number;
   score: number
   timePlayed: String
   favouriteGame: String
@@ -26,9 +26,9 @@ export class AddPlayerComponent implements OnInit {
   ngOnInit() {
     this.getGames();
   }
-
+T
   onAdd() {
-    if (this.player != "" && this.rank > 0 && this.score > 0 && this.timePlayed != "" && this.favouriteGame != "" && this.status != ""){
+    if (this.player !== "" && this.rank > 0 && this.score > 0 && this.timePlayed != "" && this.favouriteGame != "" && this.status != ""){
       this.router.navigateByUrl('/home');
     }
   }
