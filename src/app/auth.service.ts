@@ -5,11 +5,11 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  adminLogin: boolean
+  adminLogin: boolean;
 
-  Login(){
+  Login() {
     this.adminLogin = true;
-    sessionStorage.setItem('isLoggedIn', "" + this.adminLogin); 
+    sessionStorage.setItem('isLoggedIn', '' + this.adminLogin);
   }
 
   Logout() {
@@ -18,10 +18,10 @@ export class AuthService {
   }
 
   isLoggedIn(): boolean {
-    return (sessionStorage.getItem('isLoggedIn') == "true");
+    return (sessionStorage.getItem('isLoggedIn') === 'true');
   }
 
-  constructor() { 
+  constructor() {
     this.adminLogin = false;
   }
 }
