@@ -13,6 +13,9 @@ import { GamesComponent } from './games/games.component';
 import { ViewTablesComponent } from './view-tables/view-tables.component';
 import { UpdatePlayerComponent } from './update-player/update-player.component';
 import { AddPlayerComponent } from './add-player/add-player.component';
+import { PlayerService } from './player.service';
+import { GameService } from './game.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -23,12 +26,13 @@ import { AddPlayerComponent } from './add-player/add-player.component';
     GamesComponent,
     ViewTablesComponent,
     UpdatePlayerComponent,
-    AddPlayerComponent
+    AddPlayerComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path: 'home', component: ViewTablesComponent},
       {path: 'joinplayer/:id', component: JoinPlayerComponent},
@@ -39,7 +43,10 @@ import { AddPlayerComponent } from './add-player/add-player.component';
       {path: '**', redirectTo: "home", pathMatch: "full"}
     ])
   ],
-  providers: [],
+  providers: [
+    PlayerService,
+    GameService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

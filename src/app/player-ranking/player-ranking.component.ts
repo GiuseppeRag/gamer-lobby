@@ -10,17 +10,21 @@ import { AuthService } from '../auth.service';
 })
 export class PlayerRankingComponent implements OnInit {
 
-  players: Player[];
+  players: any = [];
   @Input() isAdmin: boolean;
 
-  constructor(private playerService: PlayerService, private authService: AuthService) { }
+  constructor(private playerService: PlayerService, private authService: AuthService) { 
+    this.playerService.GetPlayers().subscribe(data => {
+      this.players = data;
+    })
+  }
 
   ngOnInit() {
-    this.getPlayers();
+    //this.getPlayers();
   }
 
   getPlayers(): void{
-    this.players = this.playerService.getPlayers();
+    this.playerService.GetPlayers().subscribe(playerData => this.players = playerData);
   }
 
 }

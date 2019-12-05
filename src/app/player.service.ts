@@ -15,10 +15,6 @@ export class PlayerService {
   endpoint = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
-  getPlayers(): Player[] {
-    return PLAYERS;
-  }
-
   GetPlayers() {
     return this.http.get(`${this.endpoint}/get-player`);
   }

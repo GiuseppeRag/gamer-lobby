@@ -12,8 +12,8 @@
         <td class="tCell">{{player.name}}</td>
         <td class="tCell">{{player.rank}}</td>
         <td class="tCell">{{player.score}}</td>
-        <td class="tCell">{{player.playTime}}</td>
-        <td class="tCell">{{player.gamePlayed}}</td>
+        <td class="tCell">{{player.time_played}}</td>
+        <td class="tCell">{{player.game_played}}</td>
         <td class="tCell">{{player.status}}</td>
         <td class="tCell">
             <button *ngIf="player.status == 'Availiable' && !isAdmin" routerLink='/joinplayer/{{player.id}}'>Join Game</button>
