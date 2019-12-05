@@ -19,6 +19,8 @@ mongoose.connect(dataBaseConfig.db, {
 
 // Set up express js port
 const playerRoutes = require('./routes/player.routes');
+const gameRoutes = require('./routes/game.routes');
+const userRoute = require('./routes/user.routes');
 const app = express();
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
@@ -28,6 +30,8 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist/gamer-lobby')));
 app.use('/', express.static(path.join(__dirname, 'dist/gamer-lobby')));
 app.use('/api', playerRoutes);
+app.use('/api', gameRoutes);
+app.use('/api', userRoute);
 
 // Create port
 const port = process.env.PORT || 4000;

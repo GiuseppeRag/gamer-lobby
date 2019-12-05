@@ -8,8 +8,10 @@ const Player = require('../model/Player');
 playerRoute.route('/add-player').post((req, res, next) => {
   Player.create(req.body, (error, data) => {
     if (error) {
+      console.log("Could not add player");
       return next(error)
     } else {
+      console.log("Player added successfully");
       res.json(data)
     }
   })
@@ -20,9 +22,10 @@ playerRoute.route('/update-player/:id').put((req, res, next) => {
     $set: req.body
   }, (error, data) => {
     if (error) {
+      console.log("Could not update player");
       return next(error);
     } else {
-      console.log('Student successfully updated!');
+      console.log('Player successfully updated!');
       res.json(data)
     }
   })
@@ -32,8 +35,10 @@ playerRoute.route('/update-player/:id').put((req, res, next) => {
 playerRoute.route('/delete-player/:id').delete((req, res, next) => {
   Player.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
+      console.log('Could not delete player');
       return next(error);
     } else {
+      console.log('Player successfully deleted!');
       res.status(200).json({
         msg: data
       })

@@ -19,6 +19,10 @@ export class PlayerService {
     return PLAYERS;
   }
 
+  GetPlayers() {
+    return this.http.get(`${this.endpoint}/get-player`);
+  }
+
   AddPlayer(data: Player): Observable<any> {
     const API_URL = `${this.endpoint}/add-player`;
     return this.http.post(API_URL, data)
