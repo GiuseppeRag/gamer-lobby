@@ -12,7 +12,7 @@ export class PlayerService {
 
   constructor(private http: HttpClient) { }
 
-  endpoint = 'http://https://agile-depths-93036.herokuapp.com/:4000/api';
+  endpoint = 'http://https://agile-depths-93036.herokuapp.com:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   GetPlayers() {
