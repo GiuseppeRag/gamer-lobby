@@ -19,6 +19,10 @@ export class ViewTablesComponent implements OnInit {
     this.table = 'players';
   }
 
+  searchTable(search: String){
+
+  }
+
   changeTable(table: String){
     if (this.isAdmin && table == 'games')
       this.table = 'games'

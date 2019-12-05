@@ -1,16 +1,16 @@
-<div class="spacing">
-    <button *ngIf='!isAdmin' routerLink='/adminLogin'>Login</button>
-    <button *ngIf='isAdmin' (click)='logout()'>Logout</button>
+<div>
+    <button class="leftButton" *ngIf='!isAdmin' routerLink='/adminLogin'>Login</button>
+    <button class="leftButton" *ngIf='isAdmin' (click)='logout()'>Logout</button>
 </div>
-<div class="spacing">
-    <button (click)='changeTable("players")'>Players Rankings</button>
-    <button (click)='changeTable("games")'>Games</button>
+<div class="row">
+    <button class="optionButton, col-sm-4" (click)='changeTable("players")' [class.selected]="table == 'players'">Players Rankings</button>
+    <button class="optionButton, col-sm-4" (click)='changeTable("games")' [class.selected]="table == 'games'">Games</button>
 </div>
-<div class="spacing">
-    <input placeholder="search Bar">
-    <nav>
-        <button *ngIf='isAdmin' routerLink='/addplayer'>Add Player</button>
-    </nav>
+<div>
+    <button class="rightButton" *ngIf='isAdmin' routerLink='/addplayer'>Add Player</button>
+</div>
+<div>
+    <input #search class="searchBar" placeholder="search Bar" (input)="searchTable(search.value)">
 </div>
 <app-player-ranking *ngIf="table == 'players'" [isAdmin]='isAdmin'></app-player-ranking>
 <app-games *ngIf="table == 'games'"></app-games>

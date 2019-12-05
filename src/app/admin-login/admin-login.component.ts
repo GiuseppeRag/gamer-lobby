@@ -13,7 +13,7 @@ export class AdminLoginComponent implements OnInit {
 
   username: String;
   password: String;
-  errorMessage: String;
+  errors: String[];
 
   constructor(
     private authService: AuthService, 
@@ -24,17 +24,23 @@ export class AdminLoginComponent implements OnInit {
   }
 
   Login(f: NgForm){
+    this.errors = [];
     if (f.valid){
       if (this.username == "username" && this.password == "password") {
         this.authService.Login();
         this.router.navigateByUrl('/home');
       }
       else {
-        this.errorMessage = "Invalid Credentials Provided";
+        this.errors.push("Invalid Credentials");
       }
     }
     else {
-      this.errorMessage = "Form Invalid";
+        if (this.username == "" || this.username == null){
+          this.errors.push("Username cannot be left blank");
+        }
+        if (this.password == "" || this.password == null){
+          this.errors.push("Password cannot be left blank");
+        }
     }
   }
 

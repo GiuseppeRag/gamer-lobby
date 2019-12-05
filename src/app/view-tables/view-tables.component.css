@@ -1,4 +1,30 @@
 .spacing {
-    margin-top: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
+    align-content: center;
+}
+.leftButton {
+    float: left;
+    font-size: large;
+    color: crimson;
+    margin: 20px;
+}
+.optionButton {
+    width: 400px;
+    height: 30px;
+    font-size: large;
+    align-content: center;
+}
+.selected {
+    color: limegreen;
+}
+.rightButton {
+    float: right;
+    font-size: large;
+    color: crimson;
+    margin: 20px;
+}
+.searchBar {
+    margin: 20px;
+    align-content: center;
+    width: 75%;
 }
