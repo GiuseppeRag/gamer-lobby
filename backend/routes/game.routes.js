@@ -23,7 +23,7 @@ gameRoute.route('/update-game/:id').put((req, res, next) => {
   }, (error, data) => {
     if (error) {
       console.log("Could not update game");
-      return next(error);
+      return next();
     } else {
       console.log('game successfully updated!');
       res.json(data)
@@ -36,7 +36,7 @@ gameRoute.route('/delete-game/:id').delete((req, res, next) => {
   Game.findByIdAndRemove(req.params.id, (error, data) => {
     if (error) {
       console.log('Could not delete game');
-      return next(error);
+      return next();
     } else {
       console.log('game successfully deleted!');
       res.status(200).json({
