@@ -52,7 +52,7 @@ playerRoute.route('/get-players').get((req, res) => {
       console.log('Could not get all players');
       return next(error)
     } else {
-      console.log('games successfully retrieved!');
+      console.log('players successfully retrieved!');
       res.json(data)
     }
   })

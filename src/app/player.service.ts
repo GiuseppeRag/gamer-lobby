@@ -32,7 +32,7 @@ export class PlayerService {
   }
 
   GetPlayer(id): Observable<any> {
-    const API_URL = `${this.endpoint}/get-player/${id}`;
+    const API_URL = `${this.endpoint}/get-player/:${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
@@ -42,14 +42,14 @@ export class PlayerService {
   }
 
   UpdatePlayer(id, data: Player): Observable<any> {
-    const API_URL = `${this.endpoint}/update-player/${id}`;
+    const API_URL = `${this.endpoint}/update-player/:${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(catchError(val => of(`Caught: ${val}`)))
     );
   }
 
   DeleteStudent(id): Observable<any> {
-    const API_URL = `${this.endpoint}/delete-player/${id}`;
+    const API_URL = `${this.endpoint}/delete-player/:${id}`;
     return this.http.delete(API_URL).pipe(
       catchError(catchError(val => of(`Caught: ${val}`)))
     );

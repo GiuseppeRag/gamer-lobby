@@ -32,7 +32,7 @@ export class GameService {
   }
 
   GetGame(id): Observable<any> {
-    const API_URL = `${this.endpoint}/get-game/${id}`;
+    const API_URL = `${this.endpoint}/get-game/:${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
@@ -42,14 +42,14 @@ export class GameService {
   }
 
   UpdatePlayer(id, data: Game): Observable<any> {
-    const API_URL = `${this.endpoint}/update-game/${id}`;
+    const API_URL = `${this.endpoint}/update-game/:${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(catchError(val => of(`Caught: ${val}`)))
     );
   }
 
   DeleteGame(id): Observable<any> {
-    const API_URL = `${this.endpoint}/delete-game/${id}`;
+    const API_URL = `${this.endpoint}/delete-game/:${id}`;
     return this.http.delete(API_URL).pipe(
       catchError(catchError(val => of(`Caught: ${val}`)))
     );
