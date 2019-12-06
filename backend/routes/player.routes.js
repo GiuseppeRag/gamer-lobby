@@ -9,7 +9,7 @@ playerRoute.route('/add-player').post((req, res, next) => {
   Player.create(req.body, (error, data) => {
     if (error) {
       console.log("Could not add player");
-      return next()
+      return next(error)
     } else {
       console.log("Player added successfully");
       res.json(data)
@@ -23,7 +23,7 @@ playerRoute.route('/update-player/:id').put((req, res, next) => {
   }, (error, data) => {
     if (error) {
       console.log("Could not update player");
-      return next();
+      return next(error);
     } else {
       console.log('Player successfully updated!');
       res.json(data)
@@ -46,13 +46,11 @@ playerRoute.route('/delete-player/:id').delete((req, res, next) => {
   })
 });
 //Get All
-playerRoute.route('/get-players').get((req, res) => {
+playerRoute.route('/get-player').get((req, res) => {
   Player.find((error, data) => {
     if (error) {
-      console.log('Could not get all players');
       return next(error)
     } else {
-      console.log('players successfully retrieved!');
       res.json(data)
     }
   })
@@ -61,10 +59,8 @@ playerRoute.route('/get-players').get((req, res) => {
 playerRoute.route('/get-player/:id').get((req, res) => {
   Player.findById(req.params.id, (error, data) => {
     if (error) {
-      console.log('Could not get player');
       return next(error)
     } else {
-      console.log('player successfully retrieved!');
       res.json(data)
     }
   })

@@ -27,11 +27,13 @@ export class JoinPlayerComponent implements OnInit {
     private route: ActivatedRoute, 
     private location: Location, 
     private gameService: GameService,
-    private playerService: PlayerService) { }
+    private playerService: PlayerService) { 
+      this.id = +this.route.snapshot.paramMap.get('_id');
+      this.playerService.GetPlayer('_id')
+    }
 
   ngOnInit() {
     this.getGames();
-    this.id = +this.route.snapshot.paramMap.get('id');
   }
 
   getGames(){
