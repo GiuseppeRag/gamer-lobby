@@ -20,7 +20,7 @@ export class GameService {
   }
 
   GetGames() {
-    return this.http.get(`${this.endpoint}/get-game`);
+    return this.http.get(`${this.endpoint}/get-games`);
   }
 
   AddGame(data: Game): Observable<any> {

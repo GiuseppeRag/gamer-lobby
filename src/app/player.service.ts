@@ -20,7 +20,7 @@ export class PlayerService {
   }
 
   GetPlayers() {
-    return this.http.get(`${this.endpoint}/get-player`);
+    return this.http.get(`${this.endpoint}/get-players`);
   }
 
   AddPlayer(data: Player): Observable<any> {

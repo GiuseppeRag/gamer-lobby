@@ -46,7 +46,7 @@ playerRoute.route('/delete-player/:id').delete((req, res, next) => {
   })
 });
 //Get All
-playerRoute.route('/get-player').get((req, res) => {
+playerRoute.route('/get-players').get((req, res) => {
   Player.find((error, data) => {
     if (error) {
       return next(error)

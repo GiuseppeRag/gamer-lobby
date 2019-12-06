@@ -46,7 +46,7 @@ gameRoute.route('/delete-game/:id').delete((req, res, next) => {
   })
 });
 //Get All
-gameRoute.route('/get-game').get((req, res) => {
+gameRoute.route('/get-games').get((req, res) => {
   Game.find((error, data) => {
     if (error) {
       console.log('Could not get all games');
