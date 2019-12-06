@@ -49,8 +49,10 @@ playerRoute.route('/delete-player/:id').delete((req, res, next) => {
 playerRoute.route('/get-players').get((req, res) => {
   Player.find((error, data) => {
     if (error) {
+      console.log('Could not get all players');
       return next(error)
     } else {
+      console.log('games successfully retrieved!');
       res.json(data)
     }
   })
@@ -59,8 +61,10 @@ playerRoute.route('/get-players').get((req, res) => {
 playerRoute.route('/get-player/:id').get((req, res) => {
   Player.findById(req.params.id, (error, data) => {
     if (error) {
+      console.log('Could not get player');
       return next(error)
     } else {
+      console.log('player successfully retrieved!');
       res.json(data)
     }
   })
