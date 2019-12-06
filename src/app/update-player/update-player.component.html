@@ -7,7 +7,7 @@
         <nav>
             Rank:
             <select [(ngModel)]='rank' name='rank'>
-                <option *ngFor='let rank of ranks' [value]='rank'>{{rank}}</option>
+                <option *ngFor='let ranknum of ranks' [value]='ranknum' [selected]="ranknum == rank">{{ranknum}}</option>
             </select> 
         </nav>
         <nav>

@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 import { GameService } from '../game.service';
 import { Game } from '../game';
 import { Router } from '@angular/router';
+import { PlayerService } from '../player.service';
+import { Player } from '../player';
 
 @Component({
   selector: 'app-update-player',
@@ -12,22 +14,34 @@ import { Router } from '@angular/router';
 })
 export class UpdatePlayerComponent implements OnInit {
 
+  selectedPlayer: any
+
   player: String
   rank: number
   score: number
   timePlayed: String
   favouriteGame: String
   status: String
-  id: number
 
   ranks: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   games: Game[]
 
-  constructor(private route: ActivatedRoute, private location: Location, private gameService: GameService, private router: Router) { }
+  constructor(private route: ActivatedRoute, private location: Location, private gameService: GameService, private router: Router, private playerService: PlayerService) { 
+    var id = this.route.snapshot.paramMap.get('id');
+    this.playerService.GetPlayer(id).subscribe(data => {
+      this.selectedPlayer = data
+    });
+  }
 
   ngOnInit() {
     this.getGames();
-    this.id = +this.route.snapshot.paramMap.get('id');
+
+    this.player = this.selectedPlayer.name;
+    this.rank = this.selectedPlayer.rank;
+    this.score = this.selectedPlayer.score;
+    this.timePlayed = this.selectedPlayer.time_played;
+    this.favouriteGame = this.selectedPlayer.game_played;
+    this.status = this.selectedPlayer.status;
   }
 
   getGames(){
@@ -41,7 +55,7 @@ export class UpdatePlayerComponent implements OnInit {
   }
 
   onBack(){
-    this.location.back();
+    this.router.navigateByUrl('/home')
   }
 
 }

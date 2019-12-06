@@ -12,7 +12,7 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  endpoint = 'https://agile-depths-93036.herokuapp.com:4000/api';
+  endpoint = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   getGames(): Game[] {
@@ -41,7 +41,7 @@ export class GameService {
     );
   }
 
-  UpdatePlayer(id, data: Game): Observable<any> {
+  UpdateGame(id, data: Game): Observable<any> {
     const API_URL = `${this.endpoint}/update-game/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(catchError(val => of(`Caught: ${val}`)))
