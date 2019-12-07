@@ -11,16 +11,13 @@ export class ViewTablesComponent implements OnInit {
 
   isAdmin: boolean
   table: String;
+  searchText: String;
 
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit() {
     this.isAdmin = this.authService.isLoggedIn();
     this.table = 'players';
-  }
-
-  searchTable(search: String){
-
   }
 
   changeTable(table: String){

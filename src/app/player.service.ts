@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Player } from './player';
-import { PLAYERS } from './mock-players';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';

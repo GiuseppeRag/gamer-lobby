@@ -16,7 +16,7 @@ import { empty } from 'rxjs';
 })
 export class JoinPlayerComponent implements OnInit {
 
-  games: Game[];
+  games: any = [];
   player: Player;
   value: String;
   selectedGame: Game;
@@ -38,7 +38,7 @@ export class JoinPlayerComponent implements OnInit {
   }
 
   getGames(){
-    this.games = this.gameService.getGames();
+    this.gameService.GetGames().subscribe(data => this.games = data);
   }
 
   onBack(){

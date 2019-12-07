@@ -8,7 +8,7 @@
         <th>Status</th>
         <th></th>
     </tr>
-    <tr *ngFor="let player of players">
+    <tr *ngFor="let player of players | playerSearchFilter:searchText">
         <td class="tCell">{{player.name}}</td>
         <td class="tCell">{{player.rank}}</td>
         <td class="tCell">{{player.score}}</td>

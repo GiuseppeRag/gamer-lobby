@@ -16,6 +16,8 @@ import { AddPlayerComponent } from './add-player/add-player.component';
 import { PlayerService } from './player.service';
 import { GameService } from './game.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PlayerSearchFilterPipe } from './player-search-filter.pipe';
+import { GameSearchFilterPipe } from './game-search-filter.pipe';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HttpClientModule } from '@angular/common/http';
     ViewTablesComponent,
     UpdatePlayerComponent,
     AddPlayerComponent,
+    PlayerSearchFilterPipe,
+    GameSearchFilterPipe,
   ],
   imports: [
     BrowserModule,

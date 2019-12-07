@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 import { Game } from '../game';
@@ -11,7 +11,8 @@ import { GameService } from '../game.service';
 })
 export class GamesComponent implements OnInit {
 
-  games: Game[]
+  games: any = []
+  @Input() searchText: String
 
   constructor(
     private authService: AuthService,
@@ -23,7 +24,7 @@ export class GamesComponent implements OnInit {
   }
 
   getGames(){
-    this.games = this.gameService.getGames();
+    this.gameService.GetGames().subscribe(data => this.games = data);
   }
 
 }

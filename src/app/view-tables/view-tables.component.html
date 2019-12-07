@@ -2,7 +2,7 @@
     <button class="leftButton" *ngIf='!isAdmin' routerLink='/adminLogin'>Login</button>
     <button class="leftButton" *ngIf='isAdmin' (click)='logout()'>Logout</button>
 </div>
-<div class="row">
+<div class="row" *ngIf="isAdmin">
     <button class="optionButton, col-sm-4" (click)='changeTable("players")' [class.selected]="table == 'players'">Players Rankings</button>
     <button class="optionButton, col-sm-4" (click)='changeTable("games")' [class.selected]="table == 'games'">Games</button>
 </div>
@@ -10,8 +10,8 @@
     <button class="rightButton" *ngIf='isAdmin' routerLink='/addplayer'>Add Player</button>
 </div>
 <div>
-    <input #search class="searchBar" placeholder="search Bar" (input)="searchTable(search.value)">
+    <input #search class="searchBar" placeholder="search Bar" [(ngModel)]='searchText'>
 </div>
-<app-player-ranking *ngIf="table == 'players'" [isAdmin]='isAdmin'></app-player-ranking>
-<app-games *ngIf="table == 'games'"></app-games>
+<app-player-ranking *ngIf="table == 'players'" [isAdmin]='isAdmin' [searchText]='searchText'></app-player-ranking>
+<app-games *ngIf="table == 'games'" [searchText]='searchText'></app-games>
 

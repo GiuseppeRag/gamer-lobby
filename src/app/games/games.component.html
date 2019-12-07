@@ -8,7 +8,7 @@
         <th>Release</th>
         <th>Status</th>
     </tr>
-    <tr *ngFor='let game of games'>
+    <tr *ngFor='let game of games | gameSearchFilter:searchText'>
         <td class="tCell">{{game.title}}</td>
         <td class="tCell">{{game.platform}}</td>
         <td class="tCell">{{game.genre}}</td>

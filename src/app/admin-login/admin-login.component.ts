@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class AdminLoginComponent implements OnInit {
 
+  userData: any = []
   username: String;
   password: String;
   errors: String[];
@@ -21,12 +22,16 @@ export class AdminLoginComponent implements OnInit {
     private router: Router) { }
 
   ngOnInit() {
+    this.authService.GetUser().subscribe(data => this.userData = data)
+    console.log(this.userData)
   }
 
   Login(f: NgForm){
     this.errors = [];
     if (f.valid){
-      if (this.username == "username" && this.password == "password") {
+      console.log(this.userData.username)
+
+      if (this.username == this.userData.username && this.password == this.userData.password) {
         this.authService.Login();
         this.router.navigateByUrl('/home');
       }

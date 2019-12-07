@@ -1,5 +1,4 @@
 export class Game {
-    id: number
     title: String
     platform: String
     genre: String

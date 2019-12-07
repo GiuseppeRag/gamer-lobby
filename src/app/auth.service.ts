@@ -1,11 +1,17 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
+  endpoint = 'http://localhost:4000/api';
   adminLogin: boolean;
+
+  GetUser() {
+    return this.http.get(`${this.endpoint}/get-user`);
+  }
 
   Login() {
     this.adminLogin = true;
@@ -21,7 +27,7 @@ export class AuthService {
     return (sessionStorage.getItem('isLoggedIn') === 'true');
   }
 
-  constructor() {
+  constructor(private http: HttpClient) {
     this.adminLogin = false;
   }
 }

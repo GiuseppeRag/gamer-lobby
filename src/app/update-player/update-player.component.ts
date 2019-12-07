@@ -33,7 +33,7 @@ export class UpdatePlayerComponent implements OnInit {
   statusError: String
 
   ranks: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-  games: Game[]
+  games: any = []
 
   constructor(private route: ActivatedRoute, private location: Location, private gameService: GameService, private router: Router, private playerService: PlayerService) { 
 
@@ -63,7 +63,7 @@ export class UpdatePlayerComponent implements OnInit {
   }
 
   getGames(){
-    this.games = this.gameService.getGames();
+    this.gameService.GetGames().subscribe(data => this.games = data);
   }
 
   checkPlayer() {

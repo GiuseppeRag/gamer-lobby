@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Game } from './game';
-import { GAMES } from './mock-games';
 import {Observable, of} from 'rxjs';
 import {catchError, map} from 'rxjs/operators';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
@@ -14,10 +13,6 @@ export class GameService {
 
   endpoint = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
-
-  getGames(): Game[] {
-    return GAMES;
-  }
 
   GetGames() {
     return this.http.get(`${this.endpoint}/get-game`);

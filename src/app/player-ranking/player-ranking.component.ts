@@ -13,6 +13,7 @@ export class PlayerRankingComponent implements OnInit {
 
   players: any = [];
   @Input() isAdmin: boolean;
+  @Input() searchText: String;
 
   constructor(private playerService: PlayerService, private authService: AuthService, private router: Router) { 
     this.playerService.GetPlayers().subscribe(data => {
