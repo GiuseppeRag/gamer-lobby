@@ -26,7 +26,7 @@
         <nav class="row">
             <label for="favouriteGame" class="col-sm-4 right">Favourite Game:</label>
             <select class="col-sm-4 left" [(ngModel)]='favouriteGame' name="favouriteGame">
-                <option *ngFor='let game of games' [value]="game.id">{{game.title}}</option>
+                <option *ngFor='let game of games' [value]="game.title">{{game.title}}</option>
             </select>
             <p class="error right">{{favouriteGameError}}</p>
         </nav>

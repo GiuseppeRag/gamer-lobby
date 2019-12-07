@@ -100,7 +100,7 @@ export class AddPlayerComponent implements OnInit {
 
       if (this.playerError == "" && this.rankError == "" && this.scoreError == "" && this.timePlayedError == "" && this.favouriteGameError == "" && this.statusError == ""){
         let newPlayer: Player = {name: this.player, rank: this.rank, score: this.score, time_played: this.timePlayed, game_played: this.favouriteGame, status: this.status}
-        this.playerService.AddPlayer(newPlayer)
+        this.playerService.AddPlayer(newPlayer).subscribe()
         this.onBack()
       }
     }
