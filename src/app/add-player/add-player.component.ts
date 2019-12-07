@@ -3,6 +3,8 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { GameService } from '../game.service';
 import { Game } from '../game';
+import { PlayerService}  from '../player.service'
+import { Player } from '../player';
 import { NgForm } from '@angular/forms';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 
@@ -30,7 +32,7 @@ export class AddPlayerComponent implements OnInit {
   ranks: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   games: Game[];
 
-  constructor(private location: Location, private router: Router, private gameService: GameService) { }
+  constructor(private location: Location, private router: Router, private gameService: GameService, private playerService: PlayerService) { }
 
   ngOnInit() {
     this.getGames();
@@ -97,7 +99,9 @@ export class AddPlayerComponent implements OnInit {
       }
 
       if (this.playerError == "" && this.rankError == "" && this.scoreError == "" && this.timePlayedError == "" && this.favouriteGameError == "" && this.statusError == ""){
-        this.router.navigateByUrl('/home');
+        let newPlayer: Player = {name: this.player, rank: this.rank, score: this.score, time_played: this.timePlayed, game_played: this.favouriteGame, status: this.status}
+        this.playerService.AddPlayer(newPlayer)
+        this.onBack()
       }
     }
   }

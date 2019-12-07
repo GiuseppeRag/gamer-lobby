@@ -1,5 +1,4 @@
 export class Player {
-    id: any
     name: String
     rank: number
     score: number

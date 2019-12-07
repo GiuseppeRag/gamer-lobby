@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const playerRoute = express.Router();
+const mongoose = require('mongoose')
 
 //Model
 const Player = require('../model/Player');
@@ -57,7 +58,7 @@ playerRoute.route('/get-player').get((req, res) => {
 });
 //Get One
 playerRoute.route('/get-player/:id').get((req, res) => {
-  Player.findById(req.params.id, (error, data) => {
+  Player.findById(mongoose.Types.ObjectId(req.params.id), (error, data) => {
     if (error) {
       return next(error)
     } else {

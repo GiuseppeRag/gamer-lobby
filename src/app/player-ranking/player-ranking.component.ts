@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
 import { AuthService } from '../auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-player-ranking',
@@ -13,18 +14,18 @@ export class PlayerRankingComponent implements OnInit {
   players: any = [];
   @Input() isAdmin: boolean;
 
-  constructor(private playerService: PlayerService, private authService: AuthService) { 
+  constructor(private playerService: PlayerService, private authService: AuthService, private router: Router) { 
     this.playerService.GetPlayers().subscribe(data => {
       this.players = data;
     })
   }
 
   ngOnInit() {
-    //this.getPlayers();
+    
   }
 
-  getPlayers(): void{
-    this.playerService.GetPlayers().subscribe(playerData => this.players = playerData);
+  onDelete(player: Player, id: any){
+    this.playerService.DeletePlayer(id).subscribe()
+    this.players = this.players.filter(p => p !== player)
   }
-
 }

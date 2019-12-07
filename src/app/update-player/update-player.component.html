@@ -1,40 +1,46 @@
-<div>
+<div class="spacing">
     <form #f="ngForm">
-        <nav>               
-             Player: 
-            <input type="text" name="player" [(ngModel)]='player' />
+        <nav class="middle"><p class="error">All Fields Are Required!!</p></nav>
+        <nav class="row">
+            <label for="player" class="col-sm-4 right">Player:</label> 
+            <input class="col-sm-4 left" type="text" name="player" [(ngModel)]='player' (input)="checkPlayer()" required>
+            <p class="error right">{{playerError}}</p>
         </nav>
-        <nav>
-            Rank:
-            <select [(ngModel)]='rank' name='rank'>
-                <option *ngFor='let ranknum of ranks' [value]='ranknum' [selected]="ranknum == rank">{{ranknum}}</option>
-            </select> 
-        </nav>
-        <nav>
-            Score: 
-            <input type="text" name="score" [(ngModel)]='score' />
-        </nav>
-        <nav>
-            Time Played:
-            <input type="text" name="timePlayed" [(ngModel)]='timePlayed' />
-        </nav>
-        <nav>
-            Favourite Game:
-            <select [(ngModel)]='favouriteGame' name="favouriteGame">
-                <option *ngFor='let game of games' [value]="game.id">{{game.title}}</option>
+        <nav class="row">
+            <label for="rank" class="col-sm-4 right">Rank:</label>
+            <select class="col-sm-4 left" [(ngModel)]='rank' name='rank'>
+                <option *ngFor='let rank of ranks' [value]='rank'>{{rank}}</option>
             </select>
+            <p class="error right">{{rankError}}</p>
         </nav>
-        <nav>
-            Status:
-            <select [(ngModel)]='status' name="status">
+        <nav class="row">
+            <label for="score" class="col-sm-4 right">Score:</label>
+            <input class="col-sm-4 left" type="text" name="score" [(ngModel)]='score' (input)="checkScore()" required/>
+            <p class="error right">{{scoreError}}</p>
+        </nav>
+        <nav class="row">
+            <label for="timePlayed" class="col-sm-4 right">Time Played:</label>
+            <input class="col-sm-4 left" type="text" name="timePlayed" [(ngModel)]='timePlayed' (input)="checkTimePlayed()" required/>
+            <p class="error right">{{timePlayedError}}</p>
+        </nav>
+        <nav class="row">
+            <label for="favouriteGame" class="col-sm-4 right">Favourite Game:</label>
+            <select class="col-sm-4 left" [(ngModel)]='favouriteGame' name="favouriteGame">
+                <option *ngFor='let game of games' [value]="game.title">{{game.title}}</option>
+            </select>
+            <p class="error right">{{favouriteGameError}}</p>
+        </nav>
+        <nav class="row">
+            <label for="status" class="col-sm-4 right">Status:</label>
+            <select class="col-sm-4 left" [(ngModel)]='status' name="status">
                 <option value='Availiable'>Availiable</option>
                 <option value="Unavailiable">Unavailiable</option>
             </select>
+            <p class="error right">{{statusError}}</p>
         </nav>
-        <nav>
-            <button (click)='onUpdate()'>Update</button>
-            <button (click)='onBack()'>Cancel</button>
+        <nav class="middle">
+        <button (click)='onUpdate(f)'>Update</button>
+        <button (click)='onBack()'>Cancel</button>
         </nav>
     </form>
 </div>
-    

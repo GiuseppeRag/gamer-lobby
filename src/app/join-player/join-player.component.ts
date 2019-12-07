@@ -21,7 +21,7 @@ export class JoinPlayerComponent implements OnInit {
   value: String;
   selectedGame: Game;
   errorMessage: String;
-  id: number;
+  id: any
 
   constructor(
     private route: ActivatedRoute, 
@@ -31,7 +31,10 @@ export class JoinPlayerComponent implements OnInit {
 
   ngOnInit() {
     this.getGames();
-    this.id = +this.route.snapshot.paramMap.get('id');
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.playerService.GetPlayer(this.id).subscribe(data => {
+      this.player = data;
+    });
   }
 
   getGames(){
@@ -39,14 +42,18 @@ export class JoinPlayerComponent implements OnInit {
   }
 
   onBack(){
+    console.log("Back Called");
     this.location.back();
   }
 
-  onJoin(){
-    if (this.selectedGame != null){
-      this.location.back();
+  onJoin(f: NgForm){
+    if (f.valid && this.selectedGame != null) {
+      this.player.status = "Unavailiable";
+      this.playerService.UpdatePlayer(this.id, this.player).subscribe()
+
+      this.onBack();
     }
-    else {;
+    else {
       this.errorMessage = 'A Game must be selected';
     }
   }

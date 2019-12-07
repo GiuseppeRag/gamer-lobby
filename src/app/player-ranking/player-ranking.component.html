@@ -19,7 +19,7 @@
             <button *ngIf="player.status == 'Availiable' && !isAdmin" routerLink='/joinplayer/{{player._id}}'>Join Game</button>
             <button *ngIf="isAdmin" routerLink='/updateplayer/{{player._id}}'>Update</button>
             <br *ngIf="isAdmin">
-            <button *ngIf="isAdmin">Delete</button>
+            <button *ngIf="isAdmin" (click)="onDelete(player, player._id)">Delete</button>
         </td>
     </tr>
 </table>
