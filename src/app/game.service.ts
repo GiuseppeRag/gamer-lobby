@@ -15,7 +15,7 @@ export class GameService {
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   GetGames() {
-    return this.http.get(`${this.endpoint}/get-game`);
+    return this.http.get(`${this.endpoint}/get-games`);
   }
 
   AddGame(data: Game): Observable<any> {
