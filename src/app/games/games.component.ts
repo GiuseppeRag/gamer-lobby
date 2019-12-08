@@ -3,6 +3,7 @@ import { AuthService } from '../auth.service';
 
 import { Game } from '../game';
 import { GameService } from '../game.service';
+import {Player} from '../player';
 
 @Component({
   selector: 'app-games',
@@ -11,8 +12,8 @@ import { GameService } from '../game.service';
 })
 export class GamesComponent implements OnInit {
 
-  games: any = []
-  @Input() searchText: String
+  games: any = [];
+  @Input() searchText: String;
 
   constructor(
     private authService: AuthService,
@@ -25,6 +26,11 @@ export class GamesComponent implements OnInit {
 
   getGames(){
     this.gameService.GetGames().subscribe(data => this.games = data);
+  }
+
+  onDelete(game: Game, id: any) {
+    this.gameService.DeleteGame(id).subscribe();
+    this.games = this.games.filter(g => g !== game);
   }
 
 }
