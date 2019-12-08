@@ -11,7 +11,7 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  endpoint = 'http://localhost:4000/api';
+  endpoint = 'https://agile-depths-backend-93036.herokuapp.com/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   GetGames() {

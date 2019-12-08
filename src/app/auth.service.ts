@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AuthService {
 
-  endpoint = 'http://localhost:4000/api';
+  endpoint = 'https://agile-depths-backend-93036.herokuapp.com/api';
   adminLogin: boolean;
 
   GetUser() {
