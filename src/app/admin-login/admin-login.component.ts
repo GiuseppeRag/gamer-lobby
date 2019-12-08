@@ -31,7 +31,7 @@ export class AdminLoginComponent implements OnInit {
     if (f.valid){
       console.log(this.userData.username)
 
-      if (this.username == this.userData.username && this.password == this.userData.password) {
+      if (this.username == this.userData[0].username && this.password == this.userData[0].password) {
         this.authService.Login();
         this.router.navigateByUrl('/home');
       }
