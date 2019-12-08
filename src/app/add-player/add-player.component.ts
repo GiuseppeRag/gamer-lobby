@@ -3,7 +3,7 @@ import { Location } from '@angular/common';
 import { Router } from '@angular/router';
 import { GameService } from '../game.service';
 import { Game } from '../game';
-import { PlayerService}  from '../player.service'
+import { PlayerService}  from '../player.service';
 import { Player } from '../player';
 import { NgForm } from '@angular/forms';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
