@@ -55,8 +55,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkTitle() {
-    if (this.title === '') {
-      this.titleError = 'This field is required';
+    if (this.title == '') {
+      this.titleError = 'Title Field is required';
       return false;
     } else {
       this.titleError = '';
@@ -65,8 +65,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkPlatform() {
-    if (this.platform === '') {
-      this.platformError = 'This field is required';
+    if (this.platform == '') {
+      this.platformError = 'Platform Field is required';
       return false;
     } else {
       this.platformError = '';
@@ -75,8 +75,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkGenre() {
-    if (this.genre === '') {
-      this.genreError = 'This field is required';
+    if (this.genre == '') {
+      this.genreError = 'Genre Field is required';
       return false;
     } else {
       this.genreError = '';
@@ -85,8 +85,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkRating() {
-    if (this.rating === '') {
-      this.ratingError = 'This field is required';
+    if (this.rating == '') {
+      this.ratingError = 'Rating Field is required';
       return false;
     } else {
       this.ratingError = '';
@@ -95,8 +95,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkPublisher() {
-    if (this.publisher === '') {
-      this.publisherError = 'This field is required';
+    if (this.publisher == '') {
+      this.publisherError = 'Publisher Field is required';
       return false;
     } else {
       this.publisherError = '';
@@ -105,7 +105,7 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkRelease() {
-    if (isNaN(this.release) || this.release.toString() === '' || this.release < 0) {
+    if (isNaN(this.release) || this.release.toString() == '' || this.release < 0) {
       this.releaseError = 'Release must be a positive number';
       return false;
     } else {
@@ -115,8 +115,8 @@ export class UpdateGameComponent implements OnInit {
   }
 
   checkStatus() {
-    if (this.status === null) {
-      this.statusError = 'This field is required';
+    if (this.status == null) {
+      this.statusError = 'Status Field is required';
       return false;
     } else {
       this.statusError = '';
@@ -131,7 +131,7 @@ export class UpdateGameComponent implements OnInit {
 
   onUpdate(f: NgForm) {
 
-    if (this.verify()) {
+    if (this.verify() && f.valid) {
       const newGame: Game = {
         title: this.title,
         platform: this.platform,

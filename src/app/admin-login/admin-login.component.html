@@ -1,15 +1,19 @@
-<form #f="ngForm" class="form">
-    <nav>
-        <label for="username">Username:</label>
-        <input name="username" id="username" type="text" [(ngModel)]='username' required/>
-    </nav>
-    <nav>
-        <label for="password">Password:</label>
-        <input name="password" id="password" type="password" [(ngModel)]='password' required/>
-    </nav>
-    <button (click)='Login(f)'>Login</button>
-    <button (click)='onBack()'>Back</button>
-</form>
-<div class="error">
-    <p *ngFor="let error of errors">{{error}}</p>
+<div class="spacing middle" style="margin-left: 300px;">
+    <form #f="ngForm" class="form">
+        <nav class="row">
+            <label for="username" class="col-sm-4 right">Username:</label>
+            <input class="col-sm-4 right" name="username" id="username" type="text" [(ngModel)]='username' placeholder="username is user123" required/>
+        </nav>
+        <nav class="row">
+            <label class="right col-sm-4" for="password">Password:</label>
+            <input class="right col-sm-4" name="password" id="password" type="password" [(ngModel)]='password' placeholder="password is pa55" required/>
+        </nav>
+        <nav class="row">
+            <button (click)='Login(f)' class="col-sm-4 left" style="text-align: center;">Login</button>
+            <button (click)='onBack()' class="col-sm-4 right" style="text-align: center;">Back</button>
+        </nav>
+    </form>
+    <div class="error">
+        <p *ngFor="let error of errors">{{error}}</p>
+    </div>
 </div>

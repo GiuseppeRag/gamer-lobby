@@ -2,3 +2,27 @@
     color: red;
     padding: 10px;
 }
+.right {
+    float: left;
+    margin: 20px;
+    text-align: left;
+}
+.left {
+    float: right;
+    margin: 20px;
+    text-align: right;
+}
+.middle {
+    align-content: middle;
+    padding: 20px;
+}
+.spacing {
+    margin-left: 100px;
+    margin-right: 100px;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
