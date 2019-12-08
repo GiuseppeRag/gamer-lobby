@@ -1,0 +1,47 @@
+<div class="spacing">
+  <form #f="ngForm">
+    <nav class="middle"><p class="error">All Fields Are Required!!</p></nav>
+    <nav class="row">
+      <label for="title" class="col-sm-4 right">Title:</label>
+      <input class="col-sm-4 left" type="text" name="title" [(ngModel)]='title' (input)="checkTitle()" required>
+      <p class="error right">{{titleError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="platform" class="col-sm-4 right">Platform:</label>
+      <input class="col-sm-4 left" type="text" name="platform" [(ngModel)]='platform' (input)="checkPlatform()" required>
+      <p class="error right">{{platformError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="genre" class="col-sm-4 right">Genre:</label>
+      <input class="col-sm-4 left" type="text" name="genre" [(ngModel)]='genre' (input)="checkGenre()" required/>
+      <p class="error right">{{genreError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="rating" class="col-sm-4 right">Rating:</label>
+      <input class="col-sm-4 left" type="text" name="rating" [(ngModel)]='rating' (input)="checkRating()" required/>
+      <p class="error right">{{ratingError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="publisher" class="col-sm-4 right">Publisher:</label>
+      <input class="col-sm-4 left" type="text" name="publisher" [(ngModel)]='publisher' (input)="checkPublisher()" required/>
+      <p class="error right">{{publisherError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="release" class="col-sm-4 right">Release Date:</label>
+      <input class="col-sm-4 left" type="text" name="release" [(ngModel)]='release' (input)="checkRelease()" required/>
+      <p class="error right">{{releaseError}}</p>
+    </nav>
+    <nav class="row">
+      <label for="status" class="col-sm-4 right">Status:</label>
+      <select class="col-sm-4 left" [(ngModel)]='status' name="status">
+        <option value='Active'>Active</option>
+        <option value="Inactive">Inactive</option>
+      </select>
+      <p class="error right">{{statusError}}</p>
+    </nav>
+    <nav class="middle">
+      <button (click)='onUpdate(f)'>Update</button>
+      <button (click)='onBack()'>Cancel</button>
+    </nav>
+  </form>
+</div>

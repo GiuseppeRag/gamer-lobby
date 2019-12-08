@@ -17,6 +17,7 @@
         <td class="tCell">{{game.release}}</td>
         <td class="tCell">{{game.status}}</td>
       <td class="tCell">
+        <button routerLink='/updategame/{{game._id}}'>Update</button>
         <button (click)="onDelete(game, game._id)">Delete</button>
       </td>
     </tr>

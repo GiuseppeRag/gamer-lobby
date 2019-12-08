@@ -1,8 +1,8 @@
-import { Component, OnInit, Input } from '@angular/core';
+import {Component, OnInit, Input, DoCheck} from '@angular/core';
 import { Player } from '../player';
 import { PlayerService } from '../player.service';
 import { AuthService } from '../auth.service';
-import { Router } from '@angular/router';
+import {NavigationEnd, Router} from '@angular/router';
 
 @Component({
   selector: 'app-player-ranking',
@@ -15,18 +15,23 @@ export class PlayerRankingComponent implements OnInit {
   @Input() isAdmin: boolean;
   @Input() searchText: String;
 
-  constructor(private playerService: PlayerService, private authService: AuthService, private router: Router) { 
-    this.playerService.GetPlayers().subscribe(data => {
-      this.players = data;
-    })
+  constructor(private playerService: PlayerService, private authService: AuthService, private router: Router) {
+    router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.ngOnInit();
+      }
+
+    });
   }
 
   ngOnInit() {
-    
+    this.playerService.GetPlayers().subscribe(data => {
+      this.players = data;
+    });
   }
 
-  onDelete(player: Player, id: any){
-    this.playerService.DeletePlayer(id).subscribe()
-    this.players = this.players.filter(p => p !== player)
+  onDelete(player: Player, id: any) {
+    this.playerService.DeletePlayer(id).subscribe();
+    this.players = this.players.filter(p => p !== player);
   }
 }

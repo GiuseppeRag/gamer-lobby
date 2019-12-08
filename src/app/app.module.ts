@@ -19,6 +19,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { PlayerSearchFilterPipe } from './player-search-filter.pipe';
 import { GameSearchFilterPipe } from './game-search-filter.pipe';
 import { AddGameComponent } from './add-game/add-game.component';
+import { UpdateGameComponent } from './update-game/update-game.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { AddGameComponent } from './add-game/add-game.component';
     PlayerSearchFilterPipe,
     GameSearchFilterPipe,
     AddGameComponent,
+    UpdateGameComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,6 +47,7 @@ import { AddGameComponent } from './add-game/add-game.component';
       {path: 'adminLogin', component: AdminLoginComponent},
       {path: 'addplayer', canActivate: [AdminGuard], component: AddPlayerComponent},
       {path: 'updateplayer/:id', canActivate: [AdminGuard], component: UpdatePlayerComponent},
+      {path: 'updategame/:id', canActivate: [AdminGuard], component: UpdateGameComponent},
       {path: 'addgame', canActivate: [AdminGuard], component: AddGameComponent},
       {path: '', redirectTo: "home", pathMatch: "full"},
       {path: '**', redirectTo: "home", pathMatch: "full"}

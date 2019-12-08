@@ -1,16 +1,18 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute, Router} from '@angular/router';
 import {Location} from '@angular/common';
-import {Router} from '@angular/router';
 import {GameService} from '../game.service';
 import {NgForm} from '@angular/forms';
 import {Game} from '../game';
 
 @Component({
-  selector: 'app-add-game',
-  templateUrl: './add-game.component.html',
-  styleUrls: ['./add-game.component.css']
+  selector: 'app-update-game',
+  templateUrl: './update-game.component.html',
+  styleUrls: ['./update-game.component.css']
 })
-export class AddGameComponent implements OnInit {
+export class UpdateGameComponent implements OnInit {
+
+  prevGame: any;
 
   title: string;
   platform: string;
@@ -19,6 +21,7 @@ export class AddGameComponent implements OnInit {
   publisher: string;
   release: number;
   status: string;
+  id: any;
 
   titleError: string;
   platformError: string;
@@ -28,19 +31,27 @@ export class AddGameComponent implements OnInit {
   releaseError: string;
   statusError: string;
 
-  constructor(private location: Location, private router: Router, private gameService: GameService) { }
+  constructor(private route: ActivatedRoute, private location: Location, private gameService: GameService, private router: Router) { }
 
   ngOnInit() {
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.gameService.GetGame(this.id).subscribe(data => {
+      this.prevGame = data;
+
+      this.title = this.prevGame.title;
+      this.platform = this.prevGame.platform;
+      this.genre = this.prevGame.genre;
+      this.rating = this.prevGame.rating;
+      this.publisher = this.prevGame.publisher;
+      this.release = this.prevGame.release;
+      this.status = this.prevGame.status;
+    });
     this.titleError = '';
     this.platformError = '';
     this.genreError = '';
     this.ratingError = '';
     this.publisherError = '';
     this.statusError = '';
-  }
-
-  onBack() {
-    this.location.back();
   }
 
   checkTitle() {
@@ -118,7 +129,7 @@ export class AddGameComponent implements OnInit {
       && this.checkPublisher() && this.checkRelease() && this.checkStatus());
   }
 
-    onAdd(f: NgForm) {
+  onUpdate(f: NgForm) {
 
     if (this.verify()) {
       const newGame: Game = {
@@ -130,9 +141,13 @@ export class AddGameComponent implements OnInit {
         release: this.release,
         status: this.status
       };
-      this.gameService.AddGame(newGame).subscribe();
+      this.gameService.UpdateGame(this.id, newGame).subscribe();
       this.onBack();
     }
+  }
+
+  onBack() {
+    this.location.back();
   }
 
 }
