@@ -3,7 +3,7 @@ const app = express();
 const userRoute = express.Router();
 
 //Model
-const User = require('../model/Game');
+const User = require('../model/user');
 //Add
 userRoute.route('/add-user').post((req, res, next) => {
   User.create(req.body, (error, data) => {

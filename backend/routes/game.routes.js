@@ -3,7 +3,7 @@ const app = express();
 const gameRoute = express.Router();
 
 //Model
-const Game = require('../model/Game');
+const Game = require('../model/game');
 //Add
 gameRoute.route('/add-game').post((req, res, next) => {
   Game.create(req.body, (error, data) => {
