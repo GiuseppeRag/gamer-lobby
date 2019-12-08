@@ -10,7 +10,7 @@ export class AuthService {
   adminLogin: boolean;
 
   GetUser() {
-    return this.http.get(`${this.endpoint}/get-user`);
+    return this.http.get(`${this.endpoint}/get-users`);
   }
 
   Login() {

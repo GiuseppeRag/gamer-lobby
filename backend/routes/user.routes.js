@@ -46,7 +46,7 @@ userRoute.route('/delete-user/:id').delete((req, res, next) => {
   })
 });
 //Get All
-userRoute.route('/get-user').get((req, res) => {
+userRoute.route('/get-users').get((req, res) => {
   User.find((error, data) => {
     if (error) {
       console.log('Could not get all Users');
